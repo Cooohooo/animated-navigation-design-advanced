@@ -1,0 +1,278 @@
+:root {
+    --clr-primary-400: #2011ac;
+    --clr-neutral-100: #fff;
+    --clr-neutral-300: hsl(0, 0%, 70%);
+    --clr-neutral-900: #392bc6;
+
+    --font-size-300: 0.975rem;
+    --font-size-400: 1.125rem;
+    --font-size-500: 1.25rem;
+    --font-size-600: 1.75rem;
+    --font-size-700: 3rem;
+
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+
+    --body-padding: var(--space-8);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: var(--font-size-400);
+    margin: var(--body-padding);
+    font-family: system-ui, sans-serif;
+    display: grid;
+    height: calc(100vh - (var(--body-padding) * 2));
+}
+
+h1 {
+    font-size: var(--font-size-700);
+    font-weight: 700;
+}
+
+.hide {
+    display: none !important;
+    transition: display 1s ease-in;
+}
+
+.flex-row {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.nav-toggle {
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #fff;
+    width: 2rem;
+}
+
+.nav-exit {
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #392bc6;
+    width: 2rem;
+}
+
+/* .nav-exit:hover {
+    transform-origin: center;
+    animation: move 1s linear;
+}
+
+@keyframes move {
+    100% {
+        transform: rotate(360deg);
+    }
+} */
+
+.grid-even-columns {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.align-content-center {
+    align-content: center;
+}
+
+.grid-70-30 {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: var(--gap, calc(var(--space-4) * 2));
+}
+
+.stack {
+    position: relative;
+    display: grid;
+    grid-template-areas: "stack";
+    padding: var(--body-padding);
+}
+
+.stack > * {
+    grid-area: stack;
+}
+
+.stack header {
+    align-self: start;
+    z-index: 50;
+}
+
+.stack footer {
+    align-self: end;
+    z-index: 50;
+}
+
+.nav-list {
+    list-style: none;
+    font-weight: 700;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 var(--body-padding);
+}
+
+.main-grid > :nth-child(1) {
+    display: grid;
+    align-content: space-between;
+    text-align: center;
+}
+
+.primary-nav {
+    color: #fff;
+    transition: color 500ms ease;
+}
+
+.primary-nav-color {
+    color: #392bc6;
+}
+
+.content-grid h1 {
+    text-transform: uppercase;
+}
+
+.content-grid-p {
+    line-height: 1.6;
+}
+
+.content-grid-btn {
+    margin-top: var(--space-8);
+    text-align: center;
+    max-width: 300px;
+    max-height: 70px;
+    width: 200px;
+    height: 50px;
+}
+
+.content-grid-btn > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    color: #392bc6;
+}
+
+.content-grid,
+.nav-grid {
+    clip-path: inset(0 0 0 0);
+}
+
+.content-grid-bg {
+    background: var(--clr-primary-400);
+}
+
+.nav-grid-bg {
+    background: var(--clr-neutral-100);
+}
+
+.nav-grid-bg,
+.nav-grid {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 400ms ease, color 400ms ease;
+}
+
+[data-big-nav-open] .nav-grid-bg,
+[data-big-nav-open] .nav-grid {
+    clip-path: inset(0 0 0 0);
+}
+
+[data-big-nav-open] .content-grid-bg,
+[data-big-nav-open] .content-grid {
+    clip-path: inset(0 0 0 100%);
+}
+
+.content-grid-bg,
+.content-grid {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 400ms ease, color 400ms ease;
+}
+
+.content-grid {
+    display: grid;
+    color: var(--clr-neutral-100);
+}
+
+.nav-grid {
+    z-index: 10;
+    color: var(--clr-neutral-900);
+}
+
+.nav-grid h3 {
+    font-size: var(--font-size-600);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: var(--body-padding);
+}
+
+.nav-grid li {
+    list-style: none;
+    line-height: 2.5rem;
+    font-weight: 500;
+}
+
+.video-bg,
+.content-grid-bg,
+.nav-grid-bg {
+    position: absolute;
+    inset: calc(-1 * var(--body-padding));
+}
+
+.content-grid-bg {
+    z-index: -2;
+    mix-blend-mode: multiply;
+}
+
+.nav-grid-bg {
+    z-index: -1;
+    background: white;
+    mix-blend-mode: color;
+}
+
+.video-bg {
+    z-index: -3;
+}
+
+.video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+.closed-clip-path {
+    clip-path: inset(0 100% 0 0);
+}
+
+.footer-icons {
+    display: flex;
+    gap: var(--gap, 3rem);
+    font-size: 1.6rem;
+}
+
+.footer-icons i {
+    color: #fff;
+    transition: color 500ms ease;
+}
+
+.footer-icons.footer-icons-color i {
+    color: #392bc6;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./assets/css/all.css" />
+        <title>Slopes</title>
+    </head>
+    <body>
+        <div class="main-grid">
+            <div>
+                <p class="logo">SLOPES</p>
+                <p class="text-subdude">copyright here 2022</p>
+            </div>
+            <div class="stack">
+                <header class="flex-row justify-content-space-between">
+                    <i class="fa-solid fa-bars nav-toggle" aria-controls="nav-grid" aria-expanded="false"></i>
+                    <i class="fa-solid fa-xmark nav-exit hide" aria-controls="content-grid" aria-expanded="true"></i>
+                    <nav class="primary-nav">
+                        <ul class="nav-list flex-row" style="--gap: 3rem">
+                            <li>Ski resorts</li>
+                            <li>Accommodation</li>
+                            <li>Things to do</li>
+                            <li>About</li>
+                        </ul>
+                    </nav>
+                </header>
+                <div id="nav-grid" class="closed-clip-path nav-grid grid-even-columns align-content-center">
+                    <div>
+                        <h3>about us</h3>
+                        <ul>
+                            <li>Altitude</li>
+                            <li>Media</li>
+                            <li>Photo gallery</li>
+                            <li>Meet the team</li>
+                            <li>Term & conditions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>lessons</h3>
+                        <ul>
+                            <li>Private</li>
+                            <li>Group</li>
+                            <li>children</li>
+                            <li>Ability levels</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>off piste</h3>
+                        <ul>
+                            <li>Off-piste coaching</li>
+                            <li>Off-piste guiding</li>
+                            <li>Mountain Safety</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>performance</h3>
+                        <ul>
+                            <li>Coaching</li>
+                            <li>Group clinic</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="content-grid" class="content-grid align-content-center">
+                    <main class="grid-70-30">
+                        <div>
+                            <h1>Get fit to hit</h1>
+                            <h1>the slopes -</h1>
+                            <h1>winter in Sweden</h1>
+                        </div>
+                        <div>
+                            <p class="content-grid-p">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit molestiae
+                                similique architecto deleniti ipsum labore neque praesentium, quaerat facilis tenetur
+                                eos nulla perferendis quibusdam corporis iure aliquid, voluptatum vitae? Error?
+                            </p>
+                            <button class="content-grid-btn">
+                                <a href="#">Send request</a>
+                            </button>
+                        </div>
+                    </main>
+                </div>
+                <footer>
+                    <div class="footer-icons">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </footer>
+                <div class="content-grid-bg"></div>
+                <div class="nav-grid-bg closed-clip-path"></div>
+                <div class="video-bg">
+                    <video src="./video-bg.mp4" autoplay muted="true" loop></video>
+                </div>
+            </div>
+        </div>
+        <script>
+            const navToggle = document.querySelector(".nav-toggle");
+            const navExitIcon = document.querySelector(".nav-exit");
+            const mainGrid = document.querySelector(".main-grid");
+            const primaryHeader = document.querySelector(".primary-nav");
+            const footerIcons = document.querySelector(".footer-icons");
+
+            navExitIcon.addEventListener("click", () => {
+                primaryHeader.classList.remove("primary-nav-color");
+                footerIcons.classList.remove("footer-icons-color");
+                navExitIcon.classList.add("hide");
+                navToggle.classList.remove("hide");
+                mainGrid.toggleAttribute("data-big-nav-open");
+            });
+
+            navToggle.addEventListener("click", () => {
+                primaryHeader.classList.add("primary-nav-color");
+                footerIcons.classList.add("footer-icons-color");
+                navToggle.classList.add("hide");
+                navExitIcon.classList.remove("hide");
+                mainGrid.toggleAttribute("data-big-nav-open");
+                const menuState = navToggle.getAttribute("aria-expanded");
+                if (menuState == "false") {
+                    navToggle.setAttribute("aria-expanded", true);
+                } else {
+                    navToggle.setAttribute("aria-expanded", false);
+                }
+            });
+        </script>
+    </body>
+</html>
